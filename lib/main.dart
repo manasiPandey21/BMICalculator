@@ -24,7 +24,7 @@ class BMICalculator extends StatelessWidget {
     );
   }
 }
-
+//Input Page
 class InputPage extends StatefulWidget {
   @override
   State<InputPage> createState() => _InputPageState();
