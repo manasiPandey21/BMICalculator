@@ -24,6 +24,7 @@ class BMICalculator extends StatelessWidget {
     );
   }
 }
+
 //Input Page
 class InputPage extends StatefulWidget {
   @override
@@ -34,7 +35,7 @@ class _InputPageState extends State<InputPage> {
   late Gender selectedGender = Gender.male;
   int height = 140;
   int weight = 60;
-  int age=20;
+  int age = 20;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,25 +51,42 @@ class _InputPageState extends State<InputPage> {
                 child: Row(
               children: <Widget>[
                 Expanded(
-                    child: ReusableCard(
-                  onPress: () {
-
-                      selectedGender = Gender.male;
-                    },
-
-                  colour:
-                      selectedGender == Gender.male ? Coloring : nonColoring,
-                  cardChild: newContent(FontAwesomeIcons.mars, "MALE"),
+                    child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      selectedGender = Gender.female;
+                    });
+                  },
+                  child: Container(
+                    child: newContent(FontAwesomeIcons.mars, "MALE"),
+                    margin: EdgeInsets.all(15.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      color: selectedGender == Gender.male
+                          ? Coloring
+                          : nonColoring,
+                    ),
+                  ),
                 )),
                 Expanded(
-                    child: ReusableCard(
-                  onPress: () {
-                    selectedGender = Gender.female;
-                  },
-                  colour:
-                      selectedGender == Gender.female ? Coloring : nonColoring,
-                  cardChild: newContent(FontAwesomeIcons.venus, "FEMALE"),
-                )),
+                    child:GestureDetector(
+                      onTap: (){
+                        setState(() {
+                          selectedGender=Gender.female;
+                        });
+                      },
+                      child: Container(
+                        child: newContent(FontAwesomeIcons.venus, "FEMALE"),
+                        margin: EdgeInsets.all(15.0),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                          color: selectedGender == Gender.female
+                              ? Coloring
+                              : nonColoring,
+                        ),
+                      ),
+                    ),
+                ),
               ],
             )),
             Expanded(
@@ -125,7 +143,7 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                     child: ReusableCard(
                         colour: Coloring,
-                        onPress: (){},
+                        onPress: () {},
                         cardChild: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -135,7 +153,6 @@ class _InputPageState extends State<InputPage> {
                               weight.toString(),
                               style: kNumberTextStyle,
                             ),
-
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
@@ -145,15 +162,24 @@ class _InputPageState extends State<InputPage> {
                                         weight -= 1;
                                       });
                                     },
-                                    icon: Icon(Icons.remove_circle,size: 50,)),
-                                SizedBox(height: 50,width: 30,),
+                                    icon: Icon(
+                                      Icons.remove_circle,
+                                      size: 50,
+                                    )),
+                                SizedBox(
+                                  height: 50,
+                                  width: 30,
+                                ),
                                 IconButton(
                                   onPressed: () {
                                     setState(() {
                                       weight += 1;
                                     });
                                   },
-                                  icon: Icon(Icons.add_circle,size: 50,),
+                                  icon: Icon(
+                                    Icons.add_circle,
+                                    size: 50,
+                                  ),
                                 )
                               ],
                             )
@@ -162,38 +188,43 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                     child: ReusableCard(
                         colour: Coloring,
-                        onPress: (){},
+                        onPress: () {},
                         cardChild: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-
                             Text('AGE', style: labelTestStryle),
                             Text(
-                              weight.toString(),
+                              age.toString(),
                               style: kNumberTextStyle,
                             ),
-
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
-
                               children: <Widget>[
-
                                 IconButton(
                                     onPressed: () {
                                       setState(() {
                                         age -= 1;
                                       });
                                     },
-                                    icon: Icon(Icons.remove_circle,size: 50,)),
-                                SizedBox(height: 50,width: 30,),
+                                    icon: Icon(
+                                      Icons.remove_circle,
+                                      size: 50,
+                                    )),
+                                SizedBox(
+                                  height: 50,
+                                  width: 30,
+                                ),
                                 IconButton(
                                   onPressed: () {
                                     setState(() {
                                       age += 1;
                                     });
                                   },
-                                  icon: Icon(Icons.add_circle,size: 50,),
+                                  icon: Icon(
+                                    Icons.add_circle,
+                                    size: 50,
+                                  ),
                                 )
                               ],
                             )
@@ -207,12 +238,16 @@ class _InputPageState extends State<InputPage> {
               ],
             )),
             GestureDetector(
-              onDoubleTap: () {
+              onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => ResultsPage()));
               },
               child: Container(
-                child: Center(child: Text('CALCULATE',style: TextStyle(fontSize: 30.0,fontWeight: FontWeight.w900),)),
+                child: Center(
+                    child: Text(
+                  'CALCULATE',
+                  style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.w900),
+                )),
                 color: Colors.pink,
                 height: bottomContainerHeight,
                 width: double.infinity,
