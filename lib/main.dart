@@ -52,10 +52,10 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                     child: ReusableCard(
                   onPress: () {
-                    setState(() {
+
                       selectedGender = Gender.male;
-                    });
-                  },
+                    },
+
                   colour:
                       selectedGender == Gender.male ? Coloring : nonColoring,
                   cardChild: newContent(FontAwesomeIcons.mars, "MALE"),
@@ -145,14 +145,15 @@ class _InputPageState extends State<InputPage> {
                                         weight -= 1;
                                       });
                                     },
-                                    icon: Icon(Icons.remove_circle)),
+                                    icon: Icon(Icons.remove_circle,size: 50,)),
+                                SizedBox(height: 50,width: 30,),
                                 IconButton(
                                   onPressed: () {
                                     setState(() {
                                       weight += 1;
                                     });
                                   },
-                                  icon: Icon(Icons.add_circle),
+                                  icon: Icon(Icons.add_circle,size: 50,),
                                 )
                               ],
                             )
@@ -184,14 +185,15 @@ class _InputPageState extends State<InputPage> {
                                         age -= 1;
                                       });
                                     },
-                                    icon: Icon(Icons.remove_circle)),
+                                    icon: Icon(Icons.remove_circle,size: 50,)),
+                                SizedBox(height: 50,width: 30,),
                                 IconButton(
                                   onPressed: () {
                                     setState(() {
                                       age += 1;
                                     });
                                   },
-                                  icon: Icon(Icons.add_circle),
+                                  icon: Icon(Icons.add_circle,size: 50,),
                                 )
                               ],
                             )
@@ -210,7 +212,7 @@ class _InputPageState extends State<InputPage> {
                     MaterialPageRoute(builder: (context) => ResultsPage()));
               },
               child: Container(
-                child: Center(child: Text('CALCULATE',style: TextStyle(fontSize: 40.0,fontWeight: FontWeight.w900),)),
+                child: Center(child: Text('CALCULATE',style: TextStyle(fontSize: 30.0,fontWeight: FontWeight.w900),)),
                 color: Colors.pink,
                 height: bottomContainerHeight,
                 width: double.infinity,
