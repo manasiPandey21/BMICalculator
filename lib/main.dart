@@ -237,24 +237,33 @@ class _InputPageState extends State<InputPage> {
                 // ),
               ],
             )),
-            GestureDetector(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ResultsPage()));
-              },
-              child: Container(
-                child: Center(
-                    child: Text(
-                  'CALCULATE',
-                  style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.w900),
-                )),
-                color: Colors.pink,
-                height: bottomContainerHeight,
-                width: double.infinity,
-                margin: EdgeInsets.only(top: 10),
-              ),
-            )
+            //ButtonBottom()
           ],
         ));
+  }
+}
+
+class ButtonBottom extends StatelessWidget {
+  ButtonBottom(@required this.onTap,@required this.ButtonTextTitle);
+  final Function onTap;
+  final String ButtonTextTitle;
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+       onTap;
+      },
+      child: Container(
+        child: Center(
+            child: Text(
+          ButtonTextTitle,
+          style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.w900),
+        )),
+        color: Colors.pink,
+        height: bottomContainerHeight,
+        width: double.infinity,
+        margin: EdgeInsets.only(top: 10),
+      ),
+    );
   }
 }
