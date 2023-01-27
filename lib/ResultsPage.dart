@@ -5,10 +5,14 @@ import 'constants.dart';
 import 'Result_Brain.dart';
 
 class ResultsPage extends StatelessWidget {
-  const ResultsPage({Key? key}) : super(key: key);
+  ResultsPage(this.height,this.weight,this.age);
+  int height;
+  int weight;
+  int age;
 
   @override
   Widget build(BuildContext context) {
+    CalculateBrain cb=new CalculateBrain(height,weight);
     return Scaffold(
       appBar: AppBar(
         title: Text('BMI CALCULATOR'),
@@ -36,14 +40,31 @@ class ResultsPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
 
                   children: <Widget>[
-                    //Text(CalculateBrain.getResult,style: BMIRESULTtextStyle,),
-                    Text("22.5",style: BMIcalculatedResult,),
-                    Text("you are perfect",style: BMIguide,)
+                    Text(cb.CalculateBmi(),style: BMIcalculatedResult,),
+                    Text(cb.getResult(),style: BMIRESULTtextStyle,),
+
+                    Text(cb.getInterpret(),style: BMIguide,)
                   ],
 
                 ) ,
-              ) )
+              ) ),
           //ButtonBottom()
+          GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Container(
+              child: Center(
+                  child: Text(
+                    "RE_CALCULATE",
+                    style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.w900),
+                  )),
+              color: Colors.pink,
+              height: bottomContainerHeight,
+              width: double.infinity,
+              margin: EdgeInsets.only(top: 10),
+            ),
+          )
         ],
       ),
     );
